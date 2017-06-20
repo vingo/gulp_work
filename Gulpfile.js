@@ -19,6 +19,17 @@ gulp.task('uglify',()=>{
     // .pipe(gulp.dest('./dist/js'));
 });
 
+gulp.task('uglify2onefile',()=>{
+
+    gulp.src('./js/*.js')
+    .pipe(cleanDest('./dist/js'))
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(rename('all.min.js'))
+    .pipe(uglify())
+     .pipe(gulp.dest('./dist/js'));
+});
+
 //css and html
 gulp.task('uglify_html',()=>{
     gulp.src('./html/*.html')
